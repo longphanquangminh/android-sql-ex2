@@ -64,7 +64,7 @@ public class ProductAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 // Updating data
-
+                activity.openEditDialog(p);
             }
         });
 

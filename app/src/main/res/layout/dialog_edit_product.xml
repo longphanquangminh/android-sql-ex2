@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADD PRODUCT"
+        android:text="EDIT PRODUCT"
         android:gravity="center"
         android:textSize="28sp"
         />
