@@ -3,7 +3,9 @@ package com.k194060852.sqlite_ex2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -140,4 +142,31 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    public void deleteItem(Product p) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Xác nhận xóa!");
+        builder.setIcon(android.R.drawable.ic_delete);
+        builder.setMessage("Bạn có chắc muốn xóa sp: " + p.getProductName() + "?");
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                db.execSql("DELETE FROM " + DatabaseHelper.TBL_NAME + " WHERE " +
+                        DatabaseHelper.COL_ID + "=" + p.getProductId());
+
+                loadData();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        builder.create().show();
+
+    }
 }

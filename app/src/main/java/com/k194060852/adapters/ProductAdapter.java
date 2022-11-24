@@ -72,7 +72,7 @@ public class ProductAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 //Deleting data
-
+                activity.deleteItem(p);
             }
         });
 
